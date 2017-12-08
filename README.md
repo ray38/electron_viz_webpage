@@ -1,4 +1,4 @@
-## Electronic Enviroment Visualization Tool
+# Electronic Enviroment Visualization Tool
 
 This tool is developed to visualize electronic environment data generated from Density Functional Theory (DFT). 
 
@@ -10,36 +10,71 @@ Moreover, the tool supports viewing multiple systems and multiple 2D plots at th
 
 This tool is developed mainly with [three.js](https://threejs.org/), and wrapped with [elecrtron.js](https://electronjs.org/)
 
+## Video
 
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/ray38/electron_viz_webpage/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+## Workflows
+1. first the tool will read the `view_setup.js` file as a input. Something like this:
 ```
+var views = [
+	{
+		viewType: '3DView',
+		moleculeName: 'CO2',
+		dataFilename: "data/CO2_B3LYP_0_0_0_all_descriptors.csv"
+	},
+	{
+		viewType: '3DView',
+		moleculeName: 'H2O',
+		dataFilename: "data/H2O_B3LYP_0_0_0_all_descriptors.csv"
+	},
+	{
+		viewType: '2DHeatmap',
+		plotX: 'gamma',
+		plotY: 'epxc',
+		plotXTransform: 'linear',
+		plotYTransform: 'linear'
+	},
+	{
+		viewType: '2DHeatmap',
+		plotX: 'n',
+		plotY: 'epxc',
+		plotXTransform: 'linear',
+		plotYTransform: 'linear'
+	}
+];
+```
+The user can change this file to visualize their own data
+The tool loads all the data files for the 3D Views and pool them together, before compiling the 2D heatmaps with the pooled data.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+The user can rotate/pan/zoom the 3D views, and pan/zoom the 2D plots
+
+
+The user can customize the view of the views
+
+
+
+The user can toggle fullscreen for any one of the views to see the details
+
+
+
+The user can drag a selecton brush on any of the 2D heatmaps, and other views will update simutaneously. The corresponding regions of the selected points will be highlighted on the 3D views.
+
+
+
+
+## Implementation Details
+
+The whole package was written in Javascript as a Web app, and then wrapped with `electron.js` to make it a desktop app.. All the 3D point clouds and 2D heatmaps are generated with `Three.js`, but some functions of `D3.js` were also used. The tool boxes are implemented using `dat.gui`. 
+
+The code were brokedown into small files with `ES6/ES2015` import/export feature. Considering the browser compatibility, we transpile the JS files to `ES5` using `Babel + browserify`. 
+
+## Future goals 
+
+- Clean up the `selection` function of hte 2D plots
+- Add more selection method
+- make it so that the user can upload the view setup file instead of hard-coding it. something like this [example](http://bl.ocks.org/phil-pedruco/9913243)
+- including more views for the 3D part
+
+
 
 ### Jekyll Themes
 
