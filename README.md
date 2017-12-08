@@ -13,7 +13,7 @@ This tool is developed mainly with [three.js](https://threejs.org/), and wrapped
 ## Video
 
 ## Workflows
-1. first the tool will read the `view_setup.js` file as a input. Something like this:
+first the tool will read the `view_setup.js` file as a input. Something like this:
 ```
 var views = [
 	{
@@ -57,6 +57,11 @@ The user can toggle fullscreen for any one of the views to see the details
 
 
 The user can drag a selecton brush on any of the 2D heatmaps, and other views will update simutaneously. The corresponding regions of the selected points will be highlighted on the 3D views.
+
+
+
+
+The user can hide/show the tool boxes by pressing `h`
 
 
 
