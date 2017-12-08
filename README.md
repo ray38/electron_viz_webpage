@@ -1,3 +1,14 @@
+## Electronic Enviroment Visualization Tool
+
+This tool is developed to visualize electronic environment data generated from Density Functional Theory (DFT). 
+
+it will lod the x,y,z coordinates, electronic density, plus other properties of a molecular system from the data file, and display the system in 3D point cloud. The density of the points corresponds to the electronic density. The color of the points is highly customizable, and it could be based on various color scheme and property of choice.
+
+The tool also could plot 2D plots (2D heatmaps) based on the properties of interest. One can select a region in the 2D plot, and the corresponding points would also be selected and highlighted in the 3D views.
+
+Moreover, the tool supports viewing multiple systems and multiple 2D plots at the same time.
+
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/ray38/electron_viz_webpage/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
